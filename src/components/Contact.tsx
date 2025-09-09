@@ -5,7 +5,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6 text-blue-600" />,
       title: "خدمة العملاء",
-      details: ["+966 59 510 7071"],
+      details: ["0595107071"],
       type: "phone"
     },
     {
