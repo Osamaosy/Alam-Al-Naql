@@ -1,13 +1,6 @@
 import { Phone, ArrowDown } from "lucide-react";
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="hero"
@@ -33,13 +26,13 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={scrollToContact}
+              <a
+                href="tel:+966595107071"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 space-x-reverse"
               >
                 <Phone className="w-5 h-5" />
                 <span>اتصل الآن</span>
-              </button>
+              </a>
 
               <a
                 href="tel:+966595107071"
