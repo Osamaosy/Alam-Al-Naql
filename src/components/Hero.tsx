@@ -84,7 +84,7 @@ const Hero = () => {
           <div className="relative animate-fade-in">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-glow transition-all duration-500">
               <img
-                src="/images/heroimage.webp"
+                src="/images/herologo.png"
                 alt="شركة نقل عفش بالرياض - فريق عالم النقل المحترف لنقل الأثاث"
                 className="w-full h-96 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
                 loading="eager"
@@ -95,7 +95,7 @@ const Hero = () => {
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 bg-white p-4 rounded-2xl shadow-xl float-animation">
               <img
-                src="/images/image.webp"
+                src="/images/logo.png"
                 alt="شركة عالم النقل - لوجو"
                 className="w-12 h-12 object-contain rounded-lg"
               />
