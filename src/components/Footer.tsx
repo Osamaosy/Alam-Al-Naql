@@ -20,7 +20,7 @@ const Footer = () => {
                 <img 
                   src="/images/image.webp" 
                   alt="شركة عالم النقل - لوجو" 
-                  className="w-12 h-12 object-contain bg-white rounded-xl p-2 shadow-lg"
+                  className="w-12 h-12 object-contain bg-white rounded-lg p-2 shadow-lg"
                 />
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
               </div>

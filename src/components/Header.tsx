@@ -21,7 +21,7 @@ const Header = () => {
             <img 
               src="/images/image.webp" 
               alt="شركة عالم النقل - لوجو شركة نقل عفش بالرياض" 
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain rounded-lg"
             />
             <div>
               <h1 className="text-2xl font-bold text-blue-800">عالم النقل</h1>
