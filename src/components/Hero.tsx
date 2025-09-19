@@ -84,7 +84,7 @@ const Hero = () => {
           <div className="relative animate-fade-in">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-glow transition-all duration-500">
               <img
-                src="/images/Gemini_Generated_Image_5ftbtz5ftbtz5ftb.png"
+                src="/images/heroimage.webp"
                 alt="شركة نقل عفش بالرياض - فريق عالم النقل المحترف لنقل الأثاث"
                 className="w-full h-96 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
                 loading="eager"
