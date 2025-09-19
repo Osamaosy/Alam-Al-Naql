@@ -19,7 +19,7 @@ const Header = () => {
           {/* Logo and Company Name */}
           <div className="flex items-center space-x-3 space-x-reverse">
             <img 
-              src="/images/logo.png" 
+              src="/images/image.webp" 
               alt="شركة عالم النقل - لوجو شركة نقل عفش بالرياض" 
               className="w-12 h-12 object-contain rounded-lg"
             />
