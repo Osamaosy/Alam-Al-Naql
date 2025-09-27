@@ -41,7 +41,7 @@ const Header = () => {
           {/* Phone Number */}
           <div className="hidden md:flex items-center space-x-2 space-x-reverse">
             <Phone className="w-5 h-5 text-blue-600" />
-            <a href="tel:+966595107071" className="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+            <a id="call_button" href="tel:+966595107071" className="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
               059-510-7071
             </a>
           </div>

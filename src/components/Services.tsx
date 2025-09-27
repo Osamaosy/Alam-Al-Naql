@@ -101,6 +101,7 @@ const Services = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
+                  id="call_button"
                   href="tel:+966595107071"
                   className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >
@@ -109,6 +110,7 @@ const Services = () => {
                 </a>
                 
                 <a
+                  id="whatsapp_button"
                   href="https://wa.me/+966595107071"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -121,6 +123,7 @@ const Services = () => {
                 </a>
                 
                 <a
+                  id="call_button"
                   href="tel:0546446013"
                   className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >

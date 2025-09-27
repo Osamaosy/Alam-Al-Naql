@@ -71,11 +71,11 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                 <div>
                   <div className="text-sm text-gray-400 mb-1">خدمة العملاء:</div>
-                  <a href="tel:+966595107071" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
+                  <a id="call_button" href="tel:+966595107071" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
                     059-510-7071
                   </a>
                   <div className="text-sm text-orange-400 mt-3 mb-1">الشكاوي:</div>
-                  <a href="tel:0546446013" className="text-gray-300 hover:text-orange-400 transition-colors font-medium">
+                  <a id="call_button" href="tel:0546446013" className="text-gray-300 hover:text-orange-400 transition-colors font-medium">
                     054-644-6013
                   </a>
                 </div>

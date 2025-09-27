@@ -39,6 +39,7 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <a
+                id="call_button"
                 href="tel:+966595107071"
                 className="btn-primary flex items-center justify-center space-x-2 space-x-reverse shadow-glow"
               >
@@ -47,6 +48,7 @@ const Hero = () => {
               </a>
 
               <a
+                id="call_button"
                 href="tel:+966595107071"
                 className="btn-secondary text-center"
               >
@@ -54,6 +56,7 @@ const Hero = () => {
               </a>
 
               <a
+                id="whatsapp_button"
                 href="https://wa.me/+966595107071"
                 target="_blank"
                 rel="noopener noreferrer"
