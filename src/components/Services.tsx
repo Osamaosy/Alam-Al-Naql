@@ -1,38 +1,40 @@
 import { Shield, Zap, Users, Target, Wrench, Wind, Phone } from 'lucide-react';
-
 declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag: (...args: any[]) => void;
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    dataLayer: any[]; 
   }
 }
-
-const gtag_report_conversion = (url: string, conversionType: 'call' | 'contact'): boolean => {
+// الدالة الجديدة للتحويل المباشر (Direct Conversion)
+const gtag_report_direct_conversion = (
+  conversionType: "call" | "contact"
+): void => {
   try {
-    const callback = function (): void {
-      if (typeof(url) !== 'undefined') {
-        window.location.href = url;
-      }
-    };
-    
-    let conversionId = '';
-    
-    if (conversionType === 'call') {
-      conversionId = 'AW-17598387898/QtVBCKXaiKMbELqtyMdB';
-    } else if (conversionType === 'contact') {
-      conversionId = 'AW-17598387898/VKIiCLrjiKMbELqtyMdB';
+    let conversionId = "";
+
+    if (conversionType === "call") {
+      // انقر للاتصال
+      conversionId = "AW-17598387898/QtVBCKXaiKMbELqtyMdB";
+    } else if (conversionType === "contact") {
+      // جهة اتصال / واتساب
+      conversionId = "AW-17598387898/VKIiCLrjiKMbELqtyMdB";
     }
-    
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': conversionId,
-        'event_callback': callback
+
+    // نستخدم dataLayer.push مباشرة لتجنب مشاكل توقيت تحميل gtag.js
+    if (typeof window !== "undefined" && window.dataLayer) {
+      window.dataLayer.push({
+        event: "conversion",
+        send_to: conversionId,
       });
+      // تم إزالة event_callback لأنه غير ضروري لروابط المغادرة السريعة
     }
   } catch (error) {
     console.error("خطأ في تتبع التحويل:", error);
   }
-  return false;
+  // لم نعد نستخدم return false، مما يسمح للرابط بالعمل تلقائياً.
 };
 
 const Services = () => {
@@ -138,9 +140,8 @@ const Services = () => {
                 <a
                   id="call_button_4"
                   href="tel:+966595107071"
-                  onClick={(e) => {
-  e.preventDefault();
-  gtag_report_conversion("tel:+966595107071", "call");
+                  onClick={() => {
+    gtag_report_direct_conversion("call");
 }}
                   className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >
@@ -151,10 +152,9 @@ const Services = () => {
                 <a
                   id="whatsapp_button_1"
                   href="https://wa.me/+966595107071"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    gtag_report_conversion("https://wa.me/+966595107071", "contact");
-                  }}
+                  onClick={() => {
+                  gtag_report_direct_conversion("contact");
+                }}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
@@ -168,9 +168,8 @@ const Services = () => {
                 <a
                   id="call_button_3"
                   href="tel:0546446013"
-                  onClick={(e) => {
-  e.preventDefault();
-  gtag_report_conversion("tel:+966595107071", "call");
+                  onClick={() => {
+    gtag_report_direct_conversion("call");
 }}
                   className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >
