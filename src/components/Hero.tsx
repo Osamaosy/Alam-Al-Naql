@@ -1,5 +1,41 @@
 import { Phone, ArrowDown } from "lucide-react";
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gtag: (...args: any[]) => void;
+  }
+}const gtag_report_conversion = (
+  url: string,
+  conversionType: "call" | "contact"
+): boolean => {
+  try {
+    const callback = function (): void {
+      if (typeof url !== "undefined") {
+        window.location.href = url;
+      }
+    };
+
+    let conversionId = "";
+
+    if (conversionType === "call") {
+      conversionId = "AW-17598387898/QtVBCKXaiKMbELqtyMdB";
+    } else if (conversionType === "contact") {
+      conversionId = "AW-17598387898/VKIiCLrjiKMbELqtyMdB";
+    }
+
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: conversionId,
+        event_callback: callback,
+      });
+    }
+  } catch (error) {
+    console.error("خطأ في تتبع التحويل:", error);
+  }
+  return false;
+};
+
 const Hero = () => {
   return (
     <section
@@ -8,9 +44,15 @@ const Hero = () => {
     >
       {/* Floating Background Elements */}
       <div className="absolute top-20 right-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 float-animation"></div>
-      <div className="absolute bottom-32 left-16 w-16 h-16 bg-green-200 rounded-full opacity-20 float-animation" style={{animationDelay: '1s'}}></div>
-      <div className="absolute top-1/3 left-1/4 w-12 h-12 bg-purple-200 rounded-full opacity-20 float-animation" style={{animationDelay: '2s'}}></div>
-      
+      <div
+        className="absolute bottom-32 left-16 w-16 h-16 bg-green-200 rounded-full opacity-20 float-animation"
+        style={{ animationDelay: "1s" }}
+      ></div>
+      <div
+        className="absolute top-1/3 left-1/4 w-12 h-12 bg-purple-200 rounded-full opacity-20 float-animation"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
       <div className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -22,7 +64,9 @@ const Hero = () => {
               <h1 className="gradient-text leading-tight">
                 شركة <span className="text-blue-900">عالم النقل</span>
                 <br />
-                <span className="text-3xl lg:text-4xl">أفضل شركة نقل عفش بالرياض</span>
+                <span className="text-3xl lg:text-4xl">
+                  أفضل شركة نقل عفش بالرياض
+                </span>
               </h1>
               <h2 className="text-xl lg:text-2xl text-blue-700 font-semibold leading-relaxed">
                 ✨ خدمات نقل أثاث احترافية مع تخزين آمن وفك وتركيب متخصص
@@ -30,17 +74,23 @@ const Hero = () => {
             </div>
 
             <p className="hero-text max-w-2xl mx-auto lg:mx-0 bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
-              🚚 <strong>شركة عالم النقل</strong> - شريكك الموثوق في نقل الأثاث والعفش بالرياض
+              🚚 <strong>شركة عالم النقل</strong> - شريكك الموثوق في نقل الأثاث
+              والعفش بالرياض
               <br />
-              🔒 نوفر <strong>تخزين آمن</strong> وخدمات <strong>فك وتركيب احترافية</strong> للأثاث والمكيفات
-              <br />
-              ⭐ أكثر من <strong>10 سنوات خبرة</strong> و <strong>+1000 عميل راضي</strong>
+              🔒 نوفر <strong>تخزين آمن</strong> وخدمات{" "}
+              <strong>فك وتركيب احترافية</strong> للأثاث والمكيفات
+              <br />⭐ أكثر من <strong>10 سنوات خبرة</strong> و{" "}
+              <strong>+1000 عميل راضي</strong>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <a
-                id="call_button"
+                id="call_button_2"
                 href="tel:+966595107071"
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtag_report_conversion("tel:+966595107071", "call");
+                }}
                 className="btn-primary flex items-center justify-center space-x-2 space-x-reverse shadow-glow"
               >
                 <Phone className="w-6 h-6 animate-bounce-gentle" />
@@ -48,8 +98,12 @@ const Hero = () => {
               </a>
 
               <a
-                id="call_button"
+                id="call_button_1"
                 href="tel:+966595107071"
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtag_report_conversion("tel:+966595107071", "call");
+                }}
                 className="btn-secondary text-center"
               >
                 📱 059-510-7071
@@ -58,27 +112,44 @@ const Hero = () => {
               <a
                 id="whatsapp_button"
                 href="https://wa.me/+966595107071"
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtag_report_conversion(
+                    "https://wa.me/+966595107071",
+                    "contact"
+                  );
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-whatsapp flex items-center justify-center space-x-2 space-x-reverse"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
                 </svg>
                 <span>💬 واتساب فوري</span>
               </a>
             </div>
-            
+
             {/* Trust Indicators */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-6">
               <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                <span className="text-blue-800 font-bold text-sm">⚡ خدمة 24/7</span>
+                <span className="text-blue-800 font-bold text-sm">
+                  ⚡ خدمة 24/7
+                </span>
               </div>
               <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                <span className="text-green-800 font-bold text-sm">✅ ضمان الجودة</span>
+                <span className="text-green-800 font-bold text-sm">
+                  ✅ ضمان الجودة
+                </span>
               </div>
               <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                <span className="text-purple-800 font-bold text-sm">🏆 أسعار منافسة</span>
+                <span className="text-purple-800 font-bold text-sm">
+                  🏆 أسعار منافسة
+                </span>
               </div>
             </div>
           </div>
@@ -103,9 +174,12 @@ const Hero = () => {
                 className="w-12 h-12 object-contain rounded-lg"
               />
             </div>
-            
+
             {/* Additional floating badges */}
-            <div className="absolute -bottom-4 -left-4 bg-green-500 text-white p-3 rounded-2xl shadow-xl float-animation" style={{animationDelay: '1s'}}>
+            <div
+              className="absolute -bottom-4 -left-4 bg-green-500 text-white p-3 rounded-2xl shadow-xl float-animation"
+              style={{ animationDelay: "1s" }}
+            >
               <div className="text-center">
                 <div className="text-2xl font-bold">+1000</div>
                 <div className="text-xs">عميل راضي</div>
