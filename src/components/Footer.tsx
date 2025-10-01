@@ -9,44 +9,8 @@ import {
   Code,
   Sparkles,
 } from "lucide-react";
+import { gtagReportConversion, CONVERSION_IDS } from "../utils/gtag";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag: (...args: any[]) => void;
-    
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    dataLayer: any[]; 
-  }
-}
-// الدالة الجديدة للتحويل المباشر (Direct Conversion)
-const gtag_report_direct_conversion = (
-  conversionType: "call" | "contact"
-): void => {
-  try {
-    let conversionId = "";
-
-    if (conversionType === "call") {
-      // انقر للاتصال
-      conversionId = "AW-17598387898/QtVBCKXaiKMbELqtyMdB";
-    } else if (conversionType === "contact") {
-      // جهة اتصال / واتساب
-      conversionId = "AW-17598387898/VKIiCLrjiKMbELqtyMdB";
-    }
-
-    // نستخدم dataLayer.push مباشرة لتجنب مشاكل توقيت تحميل gtag.js
-    if (typeof window !== "undefined" && window.dataLayer) {
-      window.dataLayer.push({
-        event: "conversion",
-        send_to: conversionId,
-      });
-      // تم إزالة event_callback لأنه غير ضروري لروابط المغادرة السريعة
-    }
-  } catch (error) {
-    console.error("خطأ في تتبع التحويل:", error);
-  }
-  // لم نعد نستخدم return false، مما يسمح للرابط بالعمل تلقائياً.
-};
 
 const Footer = () => {
   return (
@@ -130,9 +94,13 @@ const Footer = () => {
                   <a
                     id="call_button_7"
                     href="tel:+966595107071"
-                    onClick={() => {
-    gtag_report_direct_conversion("call");
-}}
+                    onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "tel:+966595107071",
+                    CONVERSION_IDS.PHONE_CALL
+                  );
+                }}
                     className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
                   >
                     059-510-7071
@@ -142,10 +110,14 @@ const Footer = () => {
                   </div>
                   <a
                     id="call_button_8"
-                    href="tel:0546446013"
-                    onClick={() => {
-    gtag_report_direct_conversion("call");
-}}
+                    href="tel:+966546446013"
+                    onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "tel:+966546446013",
+                    CONVERSION_IDS.PHONE_CALL
+                  );
+                }}
                     className="text-gray-300 hover:text-orange-400 transition-colors font-medium"
                   >
                     054-644-6013

@@ -1,50 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { gtagReportConversion, CONVERSION_IDS } from "../utils/gtag";
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag: (...args: any[]) => void;
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    dataLayer: any[];
-  }
-}
-// الدالة الجديدة للتحويل المباشر (Direct Conversion)
-const gtag_report_direct_conversion = (
-  conversionType: "call" | "contact"
-): void => {
-  try {
-    let conversionId = "";
-
-    if (conversionType === "call") {
-      // انقر للاتصال
-      conversionId = "AW-17598387898/QtVBCKXaiKMbELqtyMdB";
-    } else if (conversionType === "contact") {
-      // جهة اتصال / واتساب
-      conversionId = "AW-17598387898/VKIiCLrjiKMbELqtyMdB";
-    }
-
-    // نستخدم dataLayer.push مباشرة لتجنب مشاكل توقيت تحميل gtag.js
-    if (typeof window !== "undefined" && window.dataLayer) {
-      window.dataLayer.push({
-        event: "conversion",
-        send_to: conversionId,
-      });
-      // تم إزالة event_callback لأنه غير ضروري لروابط المغادرة السريعة
-    }
-  } catch (error) {
-    console.error("خطأ في تتبع التحويل:", error);
-  }
-  // لم نعد نستخدم return false، مما يسمح للرابط بالعمل تلقائياً.
-};
-
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag: (...args: any[]) => void;
-  }
-}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -114,9 +71,13 @@ const Header = () => {
             <a
               id="call_button"
               href="tel:+966595107071"
-              onClick={() => {
-                gtag_report_direct_conversion("call");
-              }}
+              onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "tel:+966595107071",
+                    CONVERSION_IDS.PHONE_CALL
+                  );
+                }}
               className="text-blue-600 font-semibold hover:text-blue-800 transition-colors"
             >
               059-510-7071
@@ -174,9 +135,13 @@ const Header = () => {
                 <Phone className="w-5 h-5 text-blue-600" />
                 <a
                   href="tel:+966595107071"
-                  onClick={() => {
-                    gtag_report_direct_conversion("call");
-                  }}
+                  onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "tel:+966595107071",
+                    CONVERSION_IDS.PHONE_CALL
+                  );
+                }}
                   className="text-blue-600 font-semibold"
                 >
                   +966 59 510 7071

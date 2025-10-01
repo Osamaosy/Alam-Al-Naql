@@ -1,42 +1,5 @@
 import { Phone, ArrowDown } from "lucide-react";
-
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag: (...args: any[]) => void;
-    
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    dataLayer: any[]; 
-  }
-}
-// الدالة الجديدة للتحويل المباشر (Direct Conversion)
-const gtag_report_direct_conversion = (
-  conversionType: "call" | "contact"
-): void => {
-  try {
-    let conversionId = "";
-
-    if (conversionType === "call") {
-      // انقر للاتصال
-      conversionId = "AW-17598387898/QtVBCKXaiKMbELqtyMdB";
-    } else if (conversionType === "contact") {
-      // جهة اتصال / واتساب
-      conversionId = "AW-17598387898/VKIiCLrjiKMbELqtyMdB";
-    }
-
-    // نستخدم dataLayer.push مباشرة لتجنب مشاكل توقيت تحميل gtag.js
-    if (typeof window !== "undefined" && window.dataLayer) {
-      window.dataLayer.push({
-        event: "conversion",
-        send_to: conversionId,
-      });
-      // تم إزالة event_callback لأنه غير ضروري لروابط المغادرة السريعة
-    }
-  } catch (error) {
-    console.error("خطأ في تتبع التحويل:", error);
-  }
-  // لم نعد نستخدم return false، مما يسمح للرابط بالعمل تلقائياً.
-};
+import { gtagReportConversion, CONVERSION_IDS } from "../utils/gtag";
 
 const Hero = () => {
   return (
@@ -89,8 +52,12 @@ const Hero = () => {
               <a
                 id="call_button_2"
                 href="tel:+966595107071"
-                onClick={() => {
-                  gtag_report_direct_conversion("call");
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "tel:+966595107071",
+                    CONVERSION_IDS.PHONE_CALL
+                  );
                 }}
                 className="btn-primary flex items-center justify-center space-x-2 space-x-reverse shadow-glow"
               >
@@ -101,9 +68,12 @@ const Hero = () => {
               <a
                 id="call_button_1"
                 href="tel:+966595107071"
-                onClick={() => {
-                  gtag_report_direct_conversion("call");
-                  // لا يوجد e.preventDefault()، سيتم الاتصال تلقائياً
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "tel:+966595107071",
+                    CONVERSION_IDS.PHONE_CALL
+                  );
                 }}
                 className="btn-secondary text-center"
               >
@@ -113,8 +83,12 @@ const Hero = () => {
               <a
                 id="whatsapp_button"
                 href="https://wa.me/+966595107071"
-                onClick={() => {
-                  gtag_report_direct_conversion("contact");
+                onClick={(e) => {
+                  e.preventDefault();
+                  gtagReportConversion(
+                    "https://wa.me/+966595107071",
+                    CONVERSION_IDS.WHATSAPP
+                  );
                 }}
                 target="_blank"
                 rel="noopener noreferrer"
