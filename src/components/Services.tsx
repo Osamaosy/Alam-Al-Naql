@@ -104,27 +104,27 @@ const Services = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   id="call_button_4"
-                  href="tel:+966595107071"
+                  href="tel:0507838607"
                   onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966595107071",
+                    "tel:0507838607",
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
                   className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >
                   <Phone className="w-6 h-6" />
-                  <span>📞 0595107071</span>
+                  <span>📞 0507838607</span>
                 </a>
                 
                 <a
                   id="whatsapp_button_1"
-                  href="https://wa.me/+966595107071"
+                  href="https://wa.me/+966507838607"
                   onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "https://wa.me/+966595107071",
+                    "https://wa.me/+966507838607",
                     CONVERSION_IDS.WHATSAPP
                   );
                 }}

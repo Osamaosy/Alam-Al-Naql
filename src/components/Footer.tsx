@@ -93,17 +93,17 @@ const Footer = () => {
                   </div>
                   <a
                     id="call_button_7"
-                    href="tel:+966595107071"
+                    href="tel:0507838607"
                     onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966595107071",
+                    "tel:0507838607",
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
                     className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
                   >
-                    059-510-7071
+                    050-783-8607
                   </a>
                   <div className="text-sm text-orange-400 mt-3 mb-1">
                     الشكاوي:

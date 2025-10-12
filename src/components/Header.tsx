@@ -70,17 +70,17 @@ const Header = () => {
             <Phone className="w-5 h-5 text-blue-600" />
             <a
               id="call_button"
-              href="tel:+966595107071"
+              href="tel:0507838607"
               onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966595107071",
+                    "tel:0507838607",
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
               className="text-blue-600 font-semibold hover:text-blue-800 transition-colors"
             >
-              059-510-7071
+              050-783-8607
             </a>
           </div>
 
@@ -134,17 +134,17 @@ const Header = () => {
               <div className="flex items-center justify-center space-x-2 space-x-reverse pt-2">
                 <Phone className="w-5 h-5 text-blue-600" />
                 <a
-                  href="tel:+966595107071"
+                  href="tel:0507838607"
                   onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966595107071",
+                    "tel:0507838607",
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
                   className="text-blue-600 font-semibold"
                 >
-                  +966 59 510 7071
+                  050-783-8607
                 </a>
               </div>
             </div>

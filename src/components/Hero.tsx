@@ -51,11 +51,11 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <a
                 id="call_button_2"
-                href="tel:+966595107071"
+                href="tel:0507838607"
                 onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966595107071",
+                    "tel:0507838607",
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
@@ -67,26 +67,26 @@ const Hero = () => {
 
               <a
                 id="call_button_1"
-                href="tel:+966595107071"
+                href="tel:0507838607"
                 onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966595107071",
+                    "tel:0507838607",
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
                 className="btn-secondary text-center"
               >
-                📱 059-510-7071
+                📱 050-783-8607
               </a>
 
               <a
                 id="whatsapp_button"
-                href="https://wa.me/+966595107071"
+                href="https://wa.me/+966507838607"
                 onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "https://wa.me/+966595107071",
+                    "https://wa.me/+966507838607",
                     CONVERSION_IDS.WHATSAPP
                   );
                 }}
