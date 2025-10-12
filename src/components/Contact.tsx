@@ -80,7 +80,7 @@ const Contact = () => {
                         onClick={(e) => {
                   e.preventDefault();
                   gtagReportConversion(
-                    "tel:+966546446013",
+                    `tel:${detail}`,
                     CONVERSION_IDS.PHONE_CALL
                   );
                 }}
