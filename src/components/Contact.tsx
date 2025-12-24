@@ -77,13 +77,10 @@ const Contact = () => {
                       <a
                         id="call_button_5"
                         href={`tel:${detail}`}
-                        onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    `tel:${detail}`,
-                    CONVERSION_IDS.PHONE_CALL
-                  );
-                }}
+                        onClick={() => {
+                          // إصلاح
+                          gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
+                        }}
                         className={`font-semibold transition-colors ${
                           info.title.includes("الشكاوي")
                             ? "text-orange-600 hover:text-orange-800"
@@ -124,12 +121,8 @@ const Contact = () => {
               <a
                 id="call_button_6"
                 href="tel:0507838607"
-                onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
+                onClick={() => {
+                  gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
                 }}
                 className="bg-white text-blue-800 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
               >
@@ -140,12 +133,8 @@ const Contact = () => {
               <a
                 id="whatsapp_button_2"
                 href="https://wa.me/+966507838607"
-                onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "https://wa.me/+966507838607",
-                    CONVERSION_IDS.WHATSAPP
-                  );
+                onClick={() => {
+                  gtagReportConversion(CONVERSION_IDS.WHATSAPP);
                 }}
                 target="_blank"
                 rel="noopener noreferrer"

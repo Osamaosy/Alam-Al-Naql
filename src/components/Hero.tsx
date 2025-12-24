@@ -52,12 +52,8 @@ const Hero = () => {
               <a
                 id="call_button_2"
                 href="tel:0507838607"
-                onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
+                onClick={() => {
+                  gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
                 }}
                 className="btn-primary flex items-center justify-center space-x-2 space-x-reverse shadow-glow"
               >
@@ -68,12 +64,8 @@ const Hero = () => {
               <a
                 id="call_button_1"
                 href="tel:0507838607"
-                onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
+                onClick={() => {
+                  gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
                 }}
                 className="btn-secondary text-center"
               >
@@ -83,12 +75,8 @@ const Hero = () => {
               <a
                 id="whatsapp_button"
                 href="https://wa.me/+966507838607"
-                onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "https://wa.me/+966507838607",
-                    CONVERSION_IDS.WHATSAPP
-                  );
+                onClick={() => {
+                  gtagReportConversion(CONVERSION_IDS.WHATSAPP);
                 }}
                 target="_blank"
                 rel="noopener noreferrer"

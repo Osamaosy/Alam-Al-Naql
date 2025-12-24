@@ -71,12 +71,8 @@ const Header = () => {
             <a
               id="call_button"
               href="tel:0507838607"
-              onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
+              onClick={() => {
+                  gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
                 }}
               className="text-blue-600 font-semibold hover:text-blue-800 transition-colors"
             >
@@ -135,13 +131,10 @@ const Header = () => {
                 <Phone className="w-5 h-5 text-blue-600" />
                 <a
                   href="tel:0507838607"
-                  onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
-                }}
+                  onClick={() => {
+                    // إصلاح الجوال
+                    gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
+                  }}
                   className="text-blue-600 font-semibold"
                 >
                   050-783-8607

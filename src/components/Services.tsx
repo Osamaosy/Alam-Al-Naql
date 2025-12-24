@@ -1,7 +1,6 @@
 import { Shield, Zap, Users, Target, Wrench, Wind, Phone } from 'lucide-react';
 import { gtagReportConversion, CONVERSION_IDS } from "../utils/gtag";
 
-
 const Services = () => {
   const services = [
     {
@@ -105,13 +104,9 @@ const Services = () => {
                 <a
                   id="call_button_4"
                   href="tel:0507838607"
-                  onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
-                }}
+                  onClick={() => {
+                    gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
+                  }}
                   className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >
                   <Phone className="w-6 h-6" />
@@ -121,13 +116,10 @@ const Services = () => {
                 <a
                   id="whatsapp_button_1"
                   href="https://wa.me/+966507838607"
-                  onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "https://wa.me/+966507838607",
-                    CONVERSION_IDS.WHATSAPP
-                  );
-                }}
+                  onClick={() => {
+                    // تم الإصلاح
+                    gtagReportConversion(CONVERSION_IDS.WHATSAPP);
+                  }}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
@@ -141,13 +133,10 @@ const Services = () => {
                 <a
                   id="call_button_3"
                   href="tel:+966546446013"
-                  onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:+966546446013",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
-                }}
+                  onClick={() => {
+                    // تم الإصلاح
+                    gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
+                  }}
                   className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2 space-x-reverse"
                 >
                   <Phone className="w-6 h-6" />

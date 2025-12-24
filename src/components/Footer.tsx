@@ -94,13 +94,9 @@ const Footer = () => {
                   <a
                     id="call_button_7"
                     href="tel:0507838607"
-                    onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:0507838607",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
-                }}
+                    onClick={() => {
+                      gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
+                    }}
                     className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
                   >
                     050-783-8607
@@ -111,13 +107,9 @@ const Footer = () => {
                   <a
                     id="call_button_8"
                     href="tel:+966546446013"
-                    onClick={(e) => {
-                  e.preventDefault();
-                  gtagReportConversion(
-                    "tel:+966546446013",
-                    CONVERSION_IDS.PHONE_CALL
-                  );
-                }}
+                    onClick={() => {
+                      gtagReportConversion(CONVERSION_IDS.PHONE_CALL);
+                    }}
                     className="text-gray-300 hover:text-orange-400 transition-colors font-medium"
                   >
                     054-644-6013
